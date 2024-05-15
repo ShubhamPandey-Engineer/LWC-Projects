@@ -1,0 +1,119 @@
+<template >
+    <section>
+
+        <lightning-layout  horizontal-align="center" multiple-rows="true">
+            <lightning-layout-item class="signup-container auth-forms"  size="12"  medium-device-size="12"  large-device-size="4">
+
+
+                <lightning-layout  horizontal-align="spread" multiple-rows="true" class="">
+
+                    <lightning-layout-item size="12" medium-device-size="6">
+                <div class="slds-m-bottom_large slds-p-horizontal_medium">
+    <lightning-input class="b-30" label="First Name" placeholder="Enter your First Name" name="fName" onchange={handleInputChange}></lightning-input>
+</div></lightning-layout-item>
+
+
+<lightning-layout-item  size="12" medium-device-size="6">
+<div class="slds-m-bottom_large slds-p-horizontal_medium">
+    <lightning-input class="b-30" label="Last Name" placeholder="Enter your Last Name"  name="lName" onchange={handleInputChange}></lightning-input>
+
+
+</div></lightning-layout-item>
+</lightning-layout>
+    <div class="slds-m-bottom_large slds-p-horizontal_medium" >
+        <lightning-layout horizontal-align="spread" multiple-rows="true">
+
+            <lightning-layout-item size="9" >
+            <lightning-input disabled={isVerified}  label="Email" placeholder="Enter your work email address" type="email" class="user-email"  name="Email" onchange={handleInputChange}></lightning-input>
+            
+            <template if:true={codeSent}>
+            <label class="code-sent">Verification code sent.</label>
+            </template>
+
+            <template if:true={codeNotSent}>
+                <label class="code-sent label-error">Verification code not  sent.Please try after 24 hrs.</label>
+                </template>
+
+        </lightning-layout-item>
+
+<lightning-layout-item size="3" class=" send-btn">
+    <lightning-button variant="brand"  disabled={hideVerifyBtn} label={verifyBtnLabel} onclick={sendCode}></lightning-button>
+
+    </lightning-layout-item>
+</lightning-layout>
+
+
+
+
+    <template if:true={duplicateEmail} >
+
+    </template>
+ 
+    <template if:true={verifyCode}>
+    <lightning-layout horizontal-align="space" multiple-rows="true">
+
+        <lightning-layout-item size="6">
+            <lightning-input type="text" class="verificationCode" max-length="6" message-when-bad-input="Enter verification code" title="Enter verification code" name="code" onchange={handleInputChange}  placeholder="Enter verification code" label=" " ></lightning-input>
+          
+            <!-- show wrong verification code error-->
+            <template if:true={wrongCodeError}>
+            <label  class="confirm-error label-error">Please enter the correct verification code or verify again.</label>
+            </template>
+
+        </lightning-layout-item>
+
+        <lightning-layout-item size="5" class="slds-m-top_medium">
+
+    <lightning-button variant="brand" class="confirm-code" disabled={hideVerifyBtn} label="confirm" onclick={verifyEmailAddress}></lightning-button>
+    </lightning-layout-item>
+
+    </lightning-layout>
+    </template>
+
+</div>
+
+<div class="slds-m-bottom_large slds-p-horizontal_medium">
+    <lightning-input label="Password" type="password" placeholder="Enter a password"   name="Password" onchange={handleInputChange}></lightning-input>
+
+
+</div>
+
+<div class="slds-m-bottom_large slds-p-horizontal_medium">
+    <lightning-input label="Confirm Password"  type="password"   placeholder="Confirm your password" name="rePass"  onchange={handleInputChange}></lightning-input>
+
+
+</div>
+
+
+
+<div class="slds-m-bottom_medium">
+
+
+<!--
+   <lightning-input label="k" name="file uploader" onchange={handleFilesChange} type="file">
+  
+
+</lightning-input>
+<lightning-button class="slds-m-top--medium" label='up' onclick={handleSave}
+ ></lightning-button>-->
+</div>
+    
+    <lightning-layout class="slds-m-top_x-large" horizontal-align="center" multiple-rows="true">
+       
+  
+      <lightning-button label="Signup"  class="slds-m-around_small hook" variant="brand" disabled={formStatus} onclick={handleSignUp}></lightning-button>
+    
+ <lightning-button  class="slds-m-around_small hook"  variant="destructive" label="Clear" onclick={clearFormInput}></lightning-button>
+
+</lightning-layout>
+        <!-- button rows ends-->
+
+    </lightning-layout-item>
+    </lightning-layout>
+
+    </section>
+
+
+
+       
+</template>

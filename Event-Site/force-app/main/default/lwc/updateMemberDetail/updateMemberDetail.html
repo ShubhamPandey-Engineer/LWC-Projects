@@ -1,0 +1,176 @@
+<template>
+    
+    
+    <!-- Code for modal -->
+<template if:true={showModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="Modal"  aria-modal="true" aria-describedby="modal-content" class=" slds-modal fade-in slds-backdrop slds-fade-in-open slds-modal_large c_partner_info_modal">
+    <div class=" slds-modal__container c__modalContainer card-container">
+        <header class="slds-modal__header">
+    
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                <lightning-icon icon-name="utility:close" alternative-text="Close" title="Close" variant="inverse" size="medium"></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+
+            
+
+            <h2 class="slds-text-heading_medium slds-hyphenate c__fontWeightTitle">Edit Details</h2>
+        </header>
+
+ 
+          
+        <div class="c__modalvisible slds-modal__content slds-p-around_medium" id="modal-content">
+
+            <div  >
+<div class=" slds-grid slds-wrap slds-grid_align-spread ">
+
+    
+               <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+                   
+                   <lightning-input  required label="First Name" name="FirstName" value={memberInfo.FirstName} onchange={handleInput}></lightning-input>
+               </lightning-layout-item>
+
+
+               <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+                <lightning-input  required label="Last Name" name="LastName" value={memberInfo.LastName}  onchange={handleInput}></lightning-input>
+            </lightning-layout-item>
+        </div>  
+
+          
+        <div class=" slds-grid slds-wrap slds-grid_align-spread ">
+            <lightning-layout-item size="12" medium-device-size="5">
+                <lightning-input  disabled label="Email" value={memberInfo.Email}  name="Email" class="input-container"  onchange={handleInput}></lightning-input>
+            </lightning-layout-item>
+           
+            <lightning-layout-item size="12" medium-device-size="5">
+                <lightning-input pattern="[0-9]+" min-length="10" max="10" message-when-pattern-mismatch="Please enter a valid mobile number" message-when-too-long="Please enter a valid mobile number" message-when-too-short="Please enter a valid mobile number"  required  label="Phone" value={memberInfo.Phone} name="Phone" class="input-container"  onchange={handleInput}></lightning-input>
+            </lightning-layout-item>
+            </div>
+
+            
+           
+            <div class=" slds-grid slds-wrap slds-grid_align-spread">
+           
+            <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+            <template if:true={boardPickList.data}>
+
+                <lightning-combobox name="Board__c" label="Board" value={boardValue}
+
+                    options={boardPickList.data.values} onchange={handleInput}>
+
+                </lightning-combobox>
+
+            </template>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+                <lightning-input pattern="[0-9]+" max-length="10" min-length="4"  message-when-too-long="Please enter valid Employee Id" message-when-too-short="Please enter valid Employee Id"  required label="Employee Id" value={memberInfo.Employee_ID__c} name="Employee_ID__c"  onchange={handleInput}> </lightning-input>
+            </lightning-layout-item>
+
+           
+</div>
+
+
+    
+
+            <div class=" slds-grid slds-wrap slds-grid_align-spread">
+            
+
+            <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+                <lightning-input type="date" required label="Birth Date" value={memberInfo.Birthdate} name="Birthdate"  onchange={handleInput}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+                <lightning-input required label="Laptop No." value={memberInfo.Laptop_Number__c} name="Laptop_Number__c"  onchange={handleInput}></lightning-input>
+            </lightning-layout-item>
+            </div>
+
+            <div class=" slds-grid slds-wrap slds-grid_align-spread" >
+            <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+                <lightning-input type="date" required label="Joining Date" value={memberInfo.Date_of_Joining__c} name="Date_of_Joining__c"  onchange={handleInput}></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" medium-device-size="5" class="input-container">
+            <lightning-input type="date" label="Engagement Date" value={memberInfo.Engagement_Date__c} name="Engagement_Date__c"  onchange={handleInput}></lightning-input>
+</lightning-layout-item>
+
+
+           
+            </div>
+
+
+            <div class=" slds-grid slds-wrap slds-grid_align-spread" >            
+         <lightning-layout-item  size="12" medium-device-size="5" class="input-container">
+
+    
+            <lightning-input label="Marriage Date" type="date" value={memberInfo.Marriage_Aniversary__c} name="Marriage_Aniversary__c"  onchange={handleInput}></lightning-input>
+        </lightning-layout-item>
+
+
+        
+        <lightning-layout-item size="12" medium-device-size="5"  class="input-container">
+            <lightning-formatted-text value="Address"></lightning-formatted-text>
+  <lightning-textarea type="textarea" pattern="[a-zA-Z]+"  message-when-pattern-mismatch="Pattern not match"  label="Street" required value={memberInfo.MailingStreet} name="MailingStreet"  onchange={handleInput}></lightning-textarea>
+  </lightning-layout-item>
+
+      
+                </div>
+
+                <div class=" slds-grid slds-wrap slds-grid_align-spread">
+                    <lightning-layout-item size="12" medium-device-size="5" class="input-container ">
+                      <lightning-input   pattern="[0-9]+"  message-when-pattern-mismatch="Pattern not match" required label="Postal Code"  value={memberInfo.MailingPostalCode} name="MailingPostalCode"  onchange={handleInput}></lightning-input>
+                  </lightning-layout-item>
+
+                  <lightning-layout-item size="12" medium-device-size="5"  class="input-container">
+                    <c-state-city-mapping  user-obj={userStateCity}  onmapstatecity={stateCityHandler} ></c-state-city-mapping>
+                </lightning-layout-item>
+
+
+              </div>
+
+           
+
+
+       
+     
+    
+
+   <div class=" slds-grid slds-wrap slds-grid_align-spread slds-m-top_medium">
+      
+        <lightning-layout-item size="12" medium-device-size="5"  class="input-container  ">
+           <lightning-input pattern="[a-zA-Z]+"  message-when-pattern-mismatch="Pattern not match" required label="Country" value={memberInfo.MailingCountry} name="MailingCountry"  onchange={handleInput}></lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item  size="12" medium-device-size="5" class="input-container">
+            <c-upload-Profile-Image user-image = {img} onfileupload = {getFileData} onfileuploaderror={handleFileUploadError}></c-upload-Profile-Image>
+
+         
+        </lightning-layout-item>
+        
+   </div>
+
+
+
+
+     
+
+
+
+            <div class="slds-grid slds-wrap slds-grid_align-center card-footer" >
+                <lightning-button disabled={isLoading}   variant="brand" class="slds-m-around_small form-btn"  label="Save" onclick={handleUpdateMember}></lightning-button>
+                <lightning-button  class="slds-m-around_small form-btn"  label="Clear" onclick={clearFormInput}></lightning-button>
+                <lightning-button class="slds-m-around_small form-btn"  label="Cancel"  onclick={closeModal}></lightning-button>
+               
+            </div>
+           
+
+
+
+
+
+            
+
+</div></div></div>
+</section>
+</template>
+            </template>

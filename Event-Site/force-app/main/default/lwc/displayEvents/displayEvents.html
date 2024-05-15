@@ -1,0 +1,102 @@
+<template>
+    
+    <section class="component-container">
+    
+    <section class="select-event_component">
+    
+    
+        <lightning-layout multiple-rows="true">
+
+            <section class="slds-grid slds-wrap slds-align_absolute-center event-dropdown_container ">
+
+                <lightning-layout-item size="12"   class="slds-align_absolute-center">
+                <label style="COLOR:#fff">Select month and event name</label>
+                    </lightning-layout-item>
+
+            <lightning-layout-item size="12" medium-device-size="6"  class="slds-align_absolute-center">
+    
+                <lightning-combobox  value={selectedMonth} required message-when-value-missing="Please select a month" class="slds-p-around_small" options={monthsList}  onchange={handleMonthEvent}></lightning-combobox>
+            
+                </lightning-layout-item>
+    
+            <lightning-layout-item size="12" medium-device-size="6" class="slds-align_absolute-center">
+    
+        <lightning-combobox class="slds-p-right_none slds-p-around_small" disabled={disableEventChoice} title={eventChoiceTitle} value={selectedEvent} required message-when-value-missing='Please select a event'   options={eventsSelectList}  onchange={showEvents}></lightning-combobox><span><lightning-badge   class="slds-m-top_medium" title="events" label={totalEvents}></lightning-badge></span>
+     
+        </lightning-layout-item>
+        </section>
+    
+    
+        <!-- events content-->
+    
+        <lightning-layout-item size="12">
+    
+    
+            <lightning-layout multiple-rows="true" horizontal-align="">
+
+                <template if:false={selectedEvent}>
+                    <label>Please select a event.</label>
+</template>
+
+                <template if:true={selectedEvent}>
+                <template if:false={eventStatus}>
+                    <label>No {selectedEvent} this month....</label>
+                </template>
+                </template>
+    
+            <template for:each={selectedMembers} for:item="member" >
+    
+    
+            <!--member event-->
+       
+            <lightning-layout-item  key={member.Id} size="12"   medium-device-size="3">
+                <article   class="slds-card card-container member-card slds-m-around_x-small event-card ">
+                    <div class="slds-grid">
+                        <img  class="event-img" src={cardImg} alt="event Image" decoding="async"  >
+                   
+                    </div>
+                   
+                
+                    <footer class="slds-card__footer event-card_footer">
+                     
+                            <h4 class="member-name" >{member.Name}</h4>
+            
+                        <template if:true={B}>
+                        <lightning-badge label={member.Birthdate} class="slds-badge_inverse slds-m-left_small">                     
+                            </lightning-badge>
+                        </template>
+    
+                        <template if:true={W}>
+                         <lightning-badge label={member.Date_of_Joining__c} class="slds-badge_inverse slds-m-left_small">                     
+    
+    
+                            </lightning-badge>                    
+                          </template>
+     
+                          <template if:true={E}>
+                        <lightning-badge label={member.Engagement_Date__c} class="slds-badge_inverse lds-m-left_small">                     
+     
+                            </lightning-badge>
+                          </template>
+    
+                          <template if:true={A}>
+                         <lightning-badge label={member.Marriage_Aniversary__c} class="slds-badge_inverse slds-m-left_small"> </lightning-badge>                    
+    
+                          </template>
+      
+                    </footer>
+                    </article>
+                    </lightning-layout-item>
+                
+            </template>
+    
+            </lightning-layout>
+        </lightning-layout-item>
+    
+        </lightning-layout>
+    </section>
+    
+    </section>
+    
+    
+    </template>

@@ -1,0 +1,183 @@
+<template  >
+    <template if:false={userLoggedIn}>
+        <div>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+    </template>
+    
+   
+   
+    
+   
+   <!--  call if DetailUpdated fields is false  -->
+
+   <template if:true={showUpdateModal}>
+    <c-update-member-detail onr={handleCustomEvent}  home-page="true" member-info={loggedInUser}></c-update-member-detail>
+</template>
+    <section  if:true={userLoggedIn} class="">
+
+
+<lightning-layout class="site-header  slds-m-bottom_small " multiple-rows="true" vertical-align="center" horizontal-align="center">
+
+   <!--header brand-->
+
+        <lightning-layout-item class="slds-p-horizontal_medium  header-brand"  size="12" medium-device-size="2">
+        <a  href="">
+           <img width="150px" height="60px" src="https://nagarroinc19-dev-ed--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&versionId=0685j000008NHjc&operationContext=DELIVERY&contentId=05T5j00000LF9Iu&page=0&d=/a/5j000001Lu47/.Zc9cgD1V_bGAutIquYRi3VSWiMLfEC_BQRVgjEAH.0&oid=00D5j000006MzlW&dpt=null&viewId=">  
+       </a>
+     
+        </lightning-layout-item>
+
+
+        
+
+<!-- header tabs starts -->
+
+<lightning-layout-item size="12" medium-device-size="10" class="site-tabs_container hide-menu">
+
+        <lightning-layout  class="  home-tab_container" multiple-rows="true" horizontal-align="spread">
+            <!-- navbar tabs-->
+            <lightning-layout-item size="12" class=" home-tab_allMember" >
+
+                <a class="active-tab home-tab_btn slds-m-around_large d-block " label="Home" data-tab="home-content"  onclick={handleTabs} >
+                 Home
+            </a>
+
+            <a label="All members"  class="  slds-m-around_large  d-block  home-tab_btn" data-tab="memberTab-content" onclick={handleTabs} >
+                All Members
+            </a>
+
+            <a label="Events"  class="  slds-m-around_large  d-block  home-tab_btn" data-tab="eventsTab-content" onclick={handleTabs} >
+               Upcoming Events
+            </a>
+            
+        <!-- Invitation modal-->
+            <lightning-layout-item  class="d-block slds-m-around_medium">
+        <c-send-invitation  member-id={memberRecordId}></c-send-invitation>
+</lightning-layout-item>
+
+          
+<!-- 
+      <lightning-layout-item size="2"  medium-device-size="2" class="header-tab_logout menu-content_container " >
+
+            
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+            <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-border-filled profile-btn " onclick={showProfileMenu} aria-haspopup="true" aria-expanded="false" title="Show More">
+                <lightning-icon icon-name="standard:avatar" class="profile-icon" alternative-text="Avatar" title="Avatar"></lightning-icon>
+
+            </button>
+            <div class="slds-dropdown slds-dropdown_right slds-dropdown_actions slds-hide profile-menu">
+            <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+            <li class="slds-dropdown__item  " role="presentation">
+            <a href="#" role="menuitem" tabindex="0">
+            <span class="slds-truncate" title={userInfo}>{userId}</span>
+            </a>
+            </li>
+            <li class="slds-dropdown__item" role="presentation">
+            <a href="#" role="menuitem" tabindex="-1" style="padding-bottom:1rem" onclick={logout}>
+             
+                <lightning-icon icon-name="utility:logout" title="logout" class="slds-icon_xx-small" alternative-text="logout" onclick={logout}></lightning-icon>
+
+
+            </a>
+            </li>
+           
+            </ul>
+            </div>
+            </div>
+
+</lightning-layout-item> -->
+
+        </lightning-layout-item>
+
+      </lightning-layout>
+      </lightning-layout-item>
+
+      <!-- header tabs ends-->
+
+
+
+    
+
+      <lightning-layout-item size="3"  medium-device-size="2" class="header-tab_logout menu-content_container " >
+
+            
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+            <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-border-filled profile-btn " onclick={showProfileMenu} aria-haspopup="true" aria-expanded="false" title="Show More">
+                <lightning-icon icon-name="standard:avatar" class="profile-icon" alternative-text="Avatar" title="Avatar"></lightning-icon>
+
+            </button>
+            <div class="slds-dropdown slds-dropdown_right slds-dropdown_actions slds-hide profile-menu">
+            <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+            <li class="slds-dropdown__item  " role="presentation">
+            <a href="#" role="menuitem" tabindex="0">
+            <span class="slds-truncate" title={userInfo}>{userId}</span>
+            </a>
+            </li>
+            <li class="slds-dropdown__item" role="presentation">
+            <a href="#" role="menuitem" tabindex="-1" style="padding-bottom:1rem" onclick={logout}>
+             
+                <lightning-icon icon-name="utility:logout" title="logout" class="slds-icon_xx-small" alternative-text="logout" onclick={logout}></lightning-icon>
+
+
+            </a>
+            </li>
+           
+            </ul>
+            </div>
+            </div>
+
+</lightning-layout-item> 
+    
+   
+
+      </lightning-layout> 
+
+      
+<!-- menu button-->
+
+<lightning-layout-item size="12" class="menu-btn">
+    <lightning-icon icon-name="utility:chevrondown" alternative-text="menu " class="menu-toggle_btn slds-align_absolute-center  " onclick={toggleMenu}>
+    </lightning-icon>
+    </lightning-layout-item>
+
+
+
+      <hr  style="margin:.5rem  0.3rem .2rem ; height:2px "/>
+
+
+
+      <section class="">
+      <!--- homepage img-->
+      <section class="slds-show home-tab_content home-content">
+ <div class="site-home_image">
+     <img   decoding="async"   src="https://nagarroinc19-dev-ed.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0685j00000ELEI0&operationContext=DELIVERY&contentId=05T5j00000aaNP0&page=0&d=/a/5j000000dyJT/PPd65M60JW47rwaLbkA6guSt3c2DWhoeYOv5z8k4.cI&oid=00D5j000006MzlW&dpt=null&viewId=">
+ 
+ 
+ 
+  
+    </div>
+      </section>
+
+      <!-- display members component-->
+      <section class="slds-hide home-tab_content  memberTab-content">
+<c-display-members login-id={userId} member-id={memberRecordId}></c-display-members>
+      </section>
+
+      
+
+      <section class="slds-hide home-tab_content  eventsTab-content">
+        <c-display-events></c-display-events>
+       </section>
+
+ 
+
+
+       
+</section>
+</section>
+<!-- site footer 
+<footer class="site-footer">
+</footer>-->
+    
+</template>

@@ -1,0 +1,24 @@
+<template>
+    <div>
+        <div>
+        <label>Maximun Image size limit : 100 kb </label>
+        <lightning-input   accept="image/png,image/jpg,image/jpeg"      required label="Upload Profile Image"  onchange={processFile} 
+            type="file" ></lightning-input>
+            </div>
+
+        <div class="" if:false={imgCompressed}>
+            <label>Image size is too large.Please use the below link to compress the image(maximum 100kb) </label>
+            <a href="https://squoosh.app/editor" target="_blank" title="Compress Image">Compress  your Image</a>
+        </div>
+        <div  class="profile-img_preview">
+            <label>Image Preview</label>
+        <img  src={userImage}  class="card-img" alt="user image">
+        </div>
+        <div>
+            <label class="file-error" if:true={showError}>Please upload a image file</label>
+            </div>
+       
+{url}
+
+    </div><br/>    
+</template>

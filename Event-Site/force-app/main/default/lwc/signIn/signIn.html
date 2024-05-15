@@ -1,0 +1,53 @@
+<template >
+  
+    <section>
+
+        
+
+
+
+                    <!--Use template if:true to display/hide popup based on isModalOpen value--> 
+                    <template if:true={isModalOpen}>
+                        <!-- Modal/Popup Box LWC starts here -->
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <!-- call reset password component-->
+                        <c-reset-password onclose={listenChild}></c-reset-password>
+                       </section>
+                       <div class="slds-backdrop slds-backdrop_open"></div>
+                    </template>
+
+
+        <lightning-layout horizontal-align="center" multiple-rows="true">
+               
+
+            <lightning-layout-item  class="signin-container auth-forms" size="12" large-device-size="4" medium-device-size="11" >
+                     
+             
+
+
+     <lightning-layout-item padding="around-small" class="slds-m-bottom_large "  size="12" medium-device-size="12" large-device-size="4">  
+    <lightning-input class="slds-p-horizontal_medium" name="email"  placeholder="Enter your work email address"   label="Email" onchange={inputHandler}></lightning-input>
+
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small" class="slds-m-bottom_large">  
+    <lightning-input  class="slds-p-horizontal_medium" label="Password"  placeholder="Enter your password" name="password" type="password" onchange={inputHandler}></lightning-input>
+
+    </lightning-layout-item>
+
+    <lightning-layout horizontal-align="center" class="slds-m-top_large slds-m-bottom_medium" multiple-rows="true">
+        <lightning-button label="SignIn"  class="slds-m-around_small"   variant="brand"  onclick={login}></lightning-button>
+
+
+    <lightning-button  class="slds-m-around_small"  variant="destructive" label="Clear" onclick={clearFormInput}></lightning-button>
+
+    </lightning-layout>
+
+    <a class="reset-password"  onclick={openModal} >forgot password</a>
+    <!-- button rows ends-->
+
+</lightning-layout-item>
+
+    </lightning-layout>
+</section>
+</template>

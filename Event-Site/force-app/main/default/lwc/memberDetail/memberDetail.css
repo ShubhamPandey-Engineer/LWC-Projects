@@ -1,0 +1,42 @@
+@import 'c/commonCss';
+
+
+.member-label{
+    font-weight: bolder;
+}
+
+.pl-m{
+  padding: 0 1.5rem;
+}
+
+
+
+/*member-detail first row*/
+.outer-container:nth-of-type(1)
+{
+  padding:.4rem;
+  border-radius: 8px;
+  
+  background-color: #47D7AC;
+}
+
+span.slds-grid{
+  padding: .4rem;
+}
+
+
+.header-text{
+  color:#FFF;
+  font-weight: bolder;
+}
+
+
+
+
+.outer-container{
+  margin: 0 0 1rem 0;
+}
+
+.detail-container{
+  margin : auto 0;
+}

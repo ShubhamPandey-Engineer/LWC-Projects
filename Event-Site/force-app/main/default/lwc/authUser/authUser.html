@@ -1,0 +1,54 @@
+<template  >
+
+    
+
+    <lightning-layout if:true={showAuth} class=" auth-container" horizontal-align="center" pull-to-boundary="medium" multiple-rows="true">
+
+
+<!-- loader-->
+<div class="loader">HI</div>
+
+        <lightning-layout-item class="site_element  " size="12" medium-device-size="11" large-device-size="4">
+            <ul class="slds-tabs_default__nav" role="tablist">
+
+
+
+                <li class="slds-tabs_default__item slds-is-active signup-tab" data-tabcontent="cont1" data-tabs="zero" title="SignUp" role="presentation"
+                    onclick={handleActive}>
+                    <a class="slds-tabs_default__link"   href="#" role="tab" tabindex="0" aria-selected="true"
+                        aria-controls="tab-default-0" id="tab-default-0__item">SignUp</a>
+                </li>
+                <li class="slds-tabs_default__item signin-tab"  data-tabcontent="cont2" data-tabs="one" title="SignIn" role="presentation"
+                    onclick={handleActive}>
+                    <a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-selected="false"
+                        aria-controls="tab-default-1" id="tab-default-1__item">SignIn
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </lightning-layout-item>
+
+
+        <article class="content_container">
+            <section id="tab-default-0" class="slds-tabs_default__content slds-show home  cont1 signup-cont" role="tabpanel"
+                aria-labelledby="tab-default-0__item">
+                <!-- call show rooms component-->
+                <c-sign-up  onsignupsuccess={handleSwitch}></c-sign-up>
+            </section>
+            <section id="tab-default-1" class="slds-tabs_default__content slds-hide cont2 signin-cont" role="tabpanel"
+                aria-labelledby="tab-default-1__item">
+                <!-- call search room component-->
+                <c-sign-in  ></c-sign-in>
+            </section>
+
+ <img class="line-img" alt="Line"   loading="lazy" src="https://nagarroinc19-dev-ed--c.documentforce.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0685j000008NI92&operationContext=DELIVERY&contentId=05T5j00000LFAEk&page=0&d=/a/5j000001Lu4q/eq._lUsRFNsF9ILTLgw8Q5pysfU_k8DLK271WhNHw2A&oid=00D5j000006MzlW&dpt=null&viewId=">
+        </article>
+
+
+    </lightning-layout>
+
+
+</template>

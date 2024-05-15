@@ -1,0 +1,98 @@
+<template>
+
+
+   
+     
+   <!--show member detail comp modal--> 
+   <template if:true={showMemberDetailModal}>
+        <c-member-detail member-info={memberInfo}   onclosememberdetail={closeModal}></c-member-detail>
+</template>
+
+
+   <!--show member update comp modal--> 
+        <template if:true={updateMemberDetailModal}>
+        <c-update-member-detail member-info={memberInfo}     onr={handleCustomEvent} home-page=false oncloseupdatemodal={closeModal}    ></c-update-member-detail>
+</template>
+        
+   
+
+
+
+
+
+
+    <section class="slds-m-bottom_xx-large">
+       
+    
+<!-- search row-->
+
+<section class="slds-grid slds-wrap  slds-m-around_medium">
+    <lightning-layout-item  class="slds-align_absolute-center" size="10" medium-device-size="8">
+      
+
+       <lightning-input placeholder="Search Member"  title="Type member's name" type="search" label=""  value={searchedName} onchange={clearSearch} onkeyup={handleSearch}  ></lightning-input>
+    </lightning-layout-item>
+    
+</section>
+
+<label class="search-result_label" if:false={searchedResult}>No search result found...</label>
+<lightning-layout horizontal-align="" multiple-rows="true" vertical-align="center">
+
+
+
+<template if:false={allMembers}>
+    <div>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </div>
+</template>
+
+
+
+
+
+
+<template  if:true={allMembers} for:each={allMembers} for:item='member'>
+    <lightning-layout-item  key={member.Id} size="12"   medium-device-size="4">
+<article   class="slds-card card-container member-card slds-m-around_x-small ">
+    <div class="slds-grid slds-einstein-header slds-card__header ">
+    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+    <div class="slds-grid ">
+    <div class="slds-col ">
+
+        <!-- if image not uploaded-->
+        <img   style="height:90px;" alt="img" src={member.Profile_Image_URL__c} loading="lazy">
+              
+
+
+
+    </div>
+    <div class="slds-m-horizontal_medium">
+     
+    <h4 class="slds-m-around_x-small card-img card-text ">{member.Name}</h4>
+    <h4 class="slds-m-around_x-small">{member.Email}</h4>
+
+    </div>
+
+
+   
+    </div>
+    </header>
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
+    </div>
+    <footer class="slds-card__footer slds-grid_align-center slds-grid">
+
+        <lightning-button  data-name="update" if:true={member.enableUpdate} class="slds-m-horizontal_x-small"  data-id={member.Id} variant="neutral" label="Edit" onclick={getMemberInfo}></lightning-button>
+
+        <lightning-button data-name="view"  data-id={member.Id} variant="neutral" label="View" onclick={getMemberInfo}></lightning-button>
+    <!--<a class="slds-card__footer-action" href="#">View
+    </a>-->
+    </footer>
+    </article>
+    </lightning-layout-item>
+
+    </template>
+    
+    </lightning-layout>
+    </section>
+</template>

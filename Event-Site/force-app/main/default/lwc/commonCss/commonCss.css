@@ -1,0 +1,101 @@
+.auth-btn_clear , .auth-btn {
+    padding:1rem 2rem ;
+    font-weight:bolder;
+    color:#FFF;
+    transition: box-shadow .4s ease-in-out;
+
+    font-size:1rem;
+    border-radius:12px;
+  
+}
+
+
+
+
+
+  /* form styling */
+  .auth-forms{
+    background-color: #fff !important;
+    padding: .5rem
+  }
+  
+  
+  /* button styling */
+
+  /* button not having tclear class*/
+  button:not(.auth-btn_clear){
+    background-color:#0070d2;
+  
+    }
+    
+  button:is(.auth-btn_clear)
+  {
+  background-color:#a91414;
+  }
+  
+  
+    .auth-btn_clear , .auth-btn{
+      padding:1rem 2rem ;
+      font-weight:bolder;
+      color:#FFF;
+      font-size:1rem;
+
+      border-radius:8px;
+    
+    }
+
+    .auth-btn_clear , .auth-btn:hover{
+      opacity: .8;
+    }
+
+    .btn-disable{
+      cursor:no-drop !important;
+      background: gray !important;
+    }
+
+
+
+    
+  .auth-btn:focus{
+    box-shadow: 4px 8px 0 3px silver;
+    transition: box-shadow .4s ease-in-out;
+  
+  }
+   /* button styling ends */
+
+
+   /* modal styling */
+  .card-container{ padding: 3rem 0;
+   
+  }
+
+  .card-footer{
+    margin-top:2.5rem;
+  }
+.slds-backdrop{
+  backdrop-filter:brightness(.4);
+}
+
+
+.card-img{
+  object-fit: fill;
+  border-radius: 100%;
+  width: 140px;
+  height: 140px;
+  border:12px solid #c2ffd9;
+}
+
+
+/* media query for mobile device*/
+@media screen and (max-width:480px) {
+ 
+  /* modal */
+  .card-container{
+    margin: 0 .5rem;
+  }
+
+  
+  
+
+  
+}

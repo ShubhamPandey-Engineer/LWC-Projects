@@ -1,0 +1,30 @@
+@import 'c/commonCss';
+
+
+.slds-input{
+    border-radius: 30px !important;
+}
+
+.slds-modal{
+    margin:1rem;
+}
+
+
+.signin-container{
+  border-radius: 20px;
+  padding: 2rem .5rem !important;
+  margin-top: 1rem;
+
+}
+  .reset-password{
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: .7rem;
+    margin-top: 1rem;
+    color:#47d7ac;
+  }
+
+  @media screen and (max-width:480px) {
+   
+    
+  }

@@ -1,0 +1,13 @@
+@import 'c/commonCss';
+
+
+.profile-img_preview {
+    display: flex;
+    padding: 1rem;
+    font-weight: bold;
+    border: 0.08px solid silver;
+}
+
+.file-error{
+    color: rgba(222, 61, 61, 0.947);
+    }

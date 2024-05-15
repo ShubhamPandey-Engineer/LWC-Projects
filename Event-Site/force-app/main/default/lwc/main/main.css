@@ -1,0 +1,159 @@
+@import 'c/commonCss';
+
+* {
+    box-sizing: border-box;
+    
+
+    
+    
+  }
+
+  html{
+    overflow-y: hidden;
+  }
+  /* site primary bg color -
+
+  #13294B -blue
+  #47D7AC -green
+  */
+
+
+  .slds-grid_frame {
+    overflow-x: hidden !important;
+    min-width: 93vw !important;
+  }
+  
+  
+.slds-scrollable {
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+  
+  }
+
+
+  .slds-col--padded{
+      padding:0
+  }
+
+
+  /* home image */
+  .site-home_image img
+  {
+    object-fit: cover;
+    width: 100%;
+   /* height: 32.7rem;*/
+  }
+
+
+
+  /* site-tabs_button */
+  .home-tab_btn{
+    color:#13294B;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+    font-size: .9rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   }
+
+   .active-tab{
+    position: relative;
+    text-decoration: none;
+    transition: all .5s ease-in-out;
+    border-bottom:2px solid #47D7AC;
+    
+
+  }
+
+  .home-tab_btn:hover{
+    color:#47D7AC;
+  transform: scale(1.2);
+  }
+
+.header-tab_logout{
+    text-align: center;
+    position: absolute;
+    right: 0;
+}
+
+.profile-icon{
+  border-radius: 50%;
+  padding: .4rem !important;
+}
+
+
+.profile-menu{
+  z-index: 999
+}
+.p-0{
+  padding: 0;
+}
+
+/* site footer */
+.site-footer{
+  height:20px;
+  background-color: #13294B;
+}
+
+.menu-btn{
+  display: none;
+}
+
+
+
+  /*mobile */
+  @media  screen and (max-width:480px) {
+
+    .hide-menu{
+      display: none;
+      transition: all .4s ease-in-out;
+    }
+
+    .show-menu{
+      display: block;
+    }
+
+
+    .menu-btn{
+      display: block;
+
+      justify-content: center;
+    }
+    .menu-toggle_btn{
+      transition: all .4s ease-in-out;
+
+    }
+
+    .toggle-arrow{
+      transform: rotate(180deg);
+    }
+   
+  .slds-grid_frame {
+    min-width: 80vw !important;
+  }   
+
+  .site-tabs_container, .menu-content_container{
+    transition: all .4s ease-in-out;
+  }
+
+  .home-tab_container{
+    margin: 1rem 3rem;
+
+  }
+
+  .d-block{
+    display: block;
+    text-align: center;
+  }
+
+ 
+  .site-home_image img
+{
+  height: 20rem;
+}
+
+.header-tab_logout{
+position: absolute;
+top: 0;
+margin-top: 1rem;
+}
+  }

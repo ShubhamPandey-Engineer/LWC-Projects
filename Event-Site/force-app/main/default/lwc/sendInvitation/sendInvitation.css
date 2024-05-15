@@ -1,0 +1,16 @@
+@import 'c/commonCss';
+
+
+
+.recepient-modal{
+    background-color: rgba(255, 255, 255, 0.9);
+    border:1.5px solid black;
+}
+
+.recepient-modal_content{
+
+}
+
+.slds-modal__close{
+    right: 0;
+}

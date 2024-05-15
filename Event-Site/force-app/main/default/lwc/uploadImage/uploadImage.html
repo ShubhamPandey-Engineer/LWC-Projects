@@ -1,0 +1,38 @@
+<template>
+    <section class="slds-grid_frame">
+        <lightning-layout multiple-rows="true" horizontal-align="center" class="slds-card slds-p-around_medium">
+            <lightning-layout-item size="12">
+                <h4>Upload Images</h4>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-layout multiple-rows="true" horizontal-align="center">
+                    <lightning-layout-item size="5">
+                        <section>
+                            <lightning-radio-group options={imageType} onchange={changeImageType}>
+
+                            </lightning-radio-group>
+                        </section>
+                    </lightning-layout-item>
+                    <img src="https://nagarroinc19-dev-ed.my.salesforce.com/sfc/p/5j000006MzlW/a/5j000000dm5o/hYFuMOzC40DOS00DhevBk66SXACdVkm_e12q63Do6hk" >
+                    <lightning-layout-item size="3">
+                        <lightning-input type="file" accept=".jpg, .png," label="Attachment" onchange={openfileUpload}>
+                        </lightning-input>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" class="slds-p-around_medium slds-m-around_medium">
+                <lightning-layout horizontal-align="center">
+                    <lightning-button-group>
+                        <lightning-button class="slds-p-around_small" onclick={handleUpload} label="Upload">
+                        </lightning-button>
+                        <lightning-button class="slds-p-around_small" onclick={handleCancel} label="Cancel">
+                        </lightning-button>
+                    </lightning-button-group>
+                </lightning-layout>
+            </lightning-layout-item>
+
+        </lightning-layout>
+
+    </section>
+</template>

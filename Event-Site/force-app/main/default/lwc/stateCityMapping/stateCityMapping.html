@@ -1,0 +1,11 @@
+<template>
+    <lightning-layout multiple-rows="true"  >
+        <lightning-layout-item size="12" medium-device-size="5" > 
+               <lightning-combobox message-when-value-missing="Please select an option" label="State" title="State" required options={stateList} value ={mapping.stateSelected} placeholder={placeholder.stateSelected} onchange={mapCities}></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" medium-device-size="5">  
+            <lightning-combobox  message-when-value-missing="Please select an option" label="City" title="City" required  options={mapping.cities} value ={mapping.citySelected} onchange={setCity} placeholder={placeholder.citySelected}></lightning-combobox>
+        </lightning-layout-item>
+
+    </lightning-layout>
+</template>

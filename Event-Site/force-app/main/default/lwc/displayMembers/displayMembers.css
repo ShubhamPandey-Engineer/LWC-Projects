@@ -1,0 +1,60 @@
+/* card styling */
+.member-card{
+    border:1.2px solid silver;
+    transition: all .5s ease-in-out;
+    margin-bottom: 2.5rem  !important;
+  }
+
+ 
+ 
+ 
+
+
+  .member-card:hover{
+    box-shadow: 0 0 12px silver;
+
+    transform: translateY(-10px);
+  }
+
+
+  .slds-input{
+    border-top: 0 !important;
+    border-right: 0;
+    border-left:0;
+    border-bottom: 2px solid silver;
+  }
+
+  input:focus{
+    outline: none;
+  }
+  
+
+  /* search bar*/
+
+  .search-result_label{
+    font-family: unset;
+    margin: 0 1.5rem;
+    font-size: .9rem;
+    font-weight: bold;
+
+  }
+
+@media screen and (max-width:480) {
+    .table{
+        width:100%;
+        table-layout:fixed;
+        border-collapse:separate !important;
+        border-spacing:20px 40px; 
+        font-family:Helvetica, Arial, sans-serif; 
+        color:#333333;
+         font-size:16px;
+          line-height:24px;
+           font-weight:100;
+       
+    }
+
+
+    .member-card{
+      margin:.5rem 0
+    }
+}

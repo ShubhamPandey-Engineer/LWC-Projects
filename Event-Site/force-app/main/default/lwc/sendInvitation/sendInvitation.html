@@ -1,0 +1,131 @@
+<template>
+  
+     
+    <!-- select recepient modal-->
+    <!-- Code for Javascript -->
+   
+    <!-- Code for Modal Layer:LWC -->
+    <template if:true={showMemberModal}>
+        <section style="z-index: 9999;" role="dialog" tabindex="-1" aria-labelledby="Modal"  aria-modal="true" aria-describedby="modal-content2" class="slds-modal slds-fade-in-open slds-modal_small c_partner_info_modal ">
+            <div class="slds-modal__container c__modalContainer recepient-modal">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeRecepientModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" title="Close" variant="inverse" size="medium"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading_medium slds-hyphenate c__fontWeightTitle">Select Members</h2>
+                </header>
+                <div class="c__modalvisible slds-modal__content slds-p-around_medium recepient-modal_content" id="modal-content2">
+                    <template if:true={isloading}>
+                        <div class="slds-is-relative">
+                            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:false={isloading}>
+                        <div style="height: 300px;">
+                            <lightning-datatable
+                                    key-field="id"
+                                    data={data}
+                                    onrowselection={getSelectedContact}
+                                    onrowaction={test}
+                                    columns={columns}>
+                            </lightning-datatable>
+                        </div>    
+                    </template>
+                </div>
+            <hr>
+                <section  class="slds-grid slds-wrap slds-align_absolute-center">
+                    <lightning-button class="slds-m-around_medium" disabled={recepientDoneBtn} title="Done" variant="brand" label="Done"  onclick={setRecepient}></lightning-button>
+                    <lightning-button class="slds-m-around_medium" title="Cancel" label="Cancel" onclick={closeRecepientModal}></lightning-button>
+    
+                </section>
+
+            </div>
+
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+
+
+     <lightning-button  variant="brand" label="Invite Members" onclick={handleModal}> 
+     </lightning-button>  
+
+
+    <!-- Code for Modal Layer:LWC -->
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="Modal"  aria-modal="true" aria-describedby="modal-content" class=" slds-modal fade-in  slds-fade-in-open slds-modal_large c_partner_info_modal slds-p-around_large">
+            <div class="slds-modal__container c__modalContainer card-container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" title="Close" variant="inverse" size="medium"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading_medium slds-hyphenate c__fontWeightTitle">Send Invitation to members</h2>
+                </header>
+                <div class="c__modalvisible slds-modal__content slds-p-around_medium" id="modal-content">
+                    <template if:true={isloading}>
+                        <div class="slds-is-relative">
+                            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:false={isloading}>
+
+                           <lightning-layout horizontal-align="center" multiple-rows="true">
+                    
+                        <lightning-layout-item size="12" class="slds-m-left_x-large" medium-device-size="10">
+
+                        <lightning-file-upload  onuploadfinished={handleAttachment}   class="slds-modal_prompt " record-id={memberId} label="Attach Invitation file"></lightning-file-upload>
+                    <label if:true={fileUploaded}>File uploaded</label>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12" medium-device-size="10">
+
+                        <lightning-input max-length="100"  required class="slds-m-around_medium"  type="text" label="Subject" onchange={handleInput} name="emailSubject"></lightning-input>
+
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12" medium-device-size="10">
+
+                        <lightning-textarea required  style="height: 120px;" class="slds-m-around_medium"  label="Message Body" onchange={handleInput} name="emailBody"></lightning-textarea>
+                    </lightning-layout-item>
+
+
+     <!-- select recepient's-->
+
+  <lightning-layout-item size="12" medium-device-size="10" class="slds-m-left_x-large">
+
+    <section class="slds-m-bottom_large">
+     Selected Recepient <lightning-badge  label={recepientCount} title={title}></lightning-badge> 
+</section>
+
+            <lightning-radio-group name="recepientOption"
+            label="Choose recepient" required
+            options={radioOptions}
+            onchange={handleRecepient}
+            onclick={handleRecepient}
+            value={radioValue}
+            type="radio"></lightning-radio-group>
+       
+
+  </lightning-layout-item>
+                        <lightning-layout-item   size="12" class="slds-align_absolute-center">
+
+                        <lightning-button class="slds-p-around_medium"  value="" label="Send Invite" onclick={sendInvitation}>
+                        </lightning-button>                            
+
+                        <lightning-button   class="slds-p-around_medium"  onclick={closeModal} value="" label="Cancel"></lightning-button>
+                        <lightning-button   class="slds-p-around_medium"  onclick={clearForm} value="" label="Reset"></lightning-button>
+
+                        </lightning-layout-item>
+
+
+                        </lightning-layout>
+                    </template>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

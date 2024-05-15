@@ -1,0 +1,32 @@
+.event-dropdown_container{
+    background-color: #47D7AC;
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+
+.events-label{
+    font-size: 1.2rem;
+    color:steelblue;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.event-img{
+    border-bottom:1.5px solid gray;
+}
+
+
+
+.event-card_footer{
+    text-align: center;
+    line-height: 2rem;
+}
+
+.event-card:hover{
+transform: translateY(-20px);
+}
+.event-card{border: 2px solid  #47D7AC;
+    transition: transform .4s ease-in-out;
+}

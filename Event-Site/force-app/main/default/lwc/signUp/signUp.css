@@ -1,0 +1,46 @@
+@import 'c/commonCss';
+
+.signup-error{
+    height:8px;
+}
+
+.signup-container{
+    border-radius: 20px;
+    padding: 2rem .5rem !important;
+    margin-top: 1rem;
+
+}
+
+.signup-cont{
+  z-index: 99;
+}
+
+/*
+
+.hook{
+  --slds-c-button-destructive-color-background:black;
+}
+*/
+
+:host{
+  
+--slds-c-button-shadow:0 0 #234563;
+}
+
+
+
+  .send-btn{
+    position:relative;
+    top:1.5rem;
+    left: 10px;
+  }
+
+/* confirm vc box css */
+  .label-error{
+    font-size: .75rem;
+    color: #c23934;
+  }
+
+  .confirm-code{
+    position: relative;
+}
