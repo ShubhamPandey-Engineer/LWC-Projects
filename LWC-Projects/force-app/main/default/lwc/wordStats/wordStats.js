@@ -23,7 +23,7 @@ export default class WordStats extends LightningElement {
 
     get getWordCount() {
         return `Words Count : ${this.trackProp.wordCount}`;
-        
+
     }
 
     get getCharCount() {
@@ -31,7 +31,7 @@ export default class WordStats extends LightningElement {
     }
 
     get getLineCount() {
-        return `Lines Count : ${this.trackProp.lineCount}`;
+        return `Lines Count : ${this.trackProp.lineCount}`; 
     }
 
 
