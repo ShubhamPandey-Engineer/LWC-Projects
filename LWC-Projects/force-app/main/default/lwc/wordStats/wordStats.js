@@ -22,7 +22,7 @@ export default class WordStats extends LightningElement {
     }
 
     get getWordCount() {
-        return `Words Count : ${this.trackProp.wordCount}`;
+        return `Words Count : ${this.trackProp.wordCount}`; 
 
     }
 
